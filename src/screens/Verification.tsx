@@ -25,8 +25,8 @@ const Verification: React.FC = () => {
   return (
     // <SafeAreaView className="">
     <View
-    // style={{ backgroundColor: theme.bgColor }}
-    // className="w-screen h-screen flex"
+      style={{ backgroundColor: theme.bgColor }}
+      className="w-screen h-screen flex"
     >
       <View>
         <Text>Enter Your Phone Number</Text>
