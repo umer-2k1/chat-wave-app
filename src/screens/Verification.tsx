@@ -1,13 +1,6 @@
 import React, { useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { StyleSheet, Text, View, Image, Alert } from "react-native";
 // imports
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/themeContext";
@@ -53,14 +46,6 @@ const Verification: React.FC = ({ navigation }: any) => {
             withShadow
             autoFocus
           />
-          {/* <TouchableOpacity
-            style={{ backgroundColor: theme.primary }}
-            className={`flex justify-center items-center rounded-full p-4 `}
-            // onPress={() => getPhoneNumber()}
-            onPress={() => navigation.navigate("otp")}
-          >
-            <Text className="text-center text-white">Continue</Text>
-          </TouchableOpacity> */}
           <CustomButton
             label="Continue"
             onPress={() => navigation.navigate("otp")}
