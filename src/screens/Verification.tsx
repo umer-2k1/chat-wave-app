@@ -1,14 +1,19 @@
 import React, { useState, useRef } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Alert,
+  TextInputProps,
+} from "react-native";
 // imports
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/themeContext";
 import PhoneInput from "react-native-phone-number-input";
 import CustomButton from "../components/CustomButton";
 
 const Verification: React.FC = ({ navigation }: any) => {
-  const { theme, isDark, changeTheme } = useTheme();
+  const { theme, isDark } = useTheme();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [formattedValue, setFormattedValue] = useState<string>("");
   const [valid, setValid] = useState<boolean>(false);
@@ -17,18 +22,52 @@ const Verification: React.FC = ({ navigation }: any) => {
   const getPhoneNumber = () => {
     Alert.alert(formattedValue);
   };
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: theme.secondary,
+      color: theme.textColor,
+    },
+
+    phoneInputContainer: {
+      backgroundColor: theme.secondary,
+      color: theme.textColor,
+    },
+    phoneInputText: {
+      color: theme.textColor,
+    },
+    flagStyle: {
+      backgroundColor: theme.secondary,
+    },
+    countryPickerButtonStyle: {
+      color: "#fff",
+      backgroundColor: "#fff",
+    },
+    phoneNumberText: {
+      color: "#fff",
+    },
+  });
+  const commonTextInputProps: TextInputProps = {
+    placeholder: "Enter Phone Noumber",
+    placeholderTextColor: theme.textColor,
+  };
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
       className="w-screen h-screen flex"
     >
       <View className="">
-        <Text>Enter Your Phone Number</Text>
-        <Text>
+        <Text style={{ color: theme.textColor }}>Enter Your Phone Number</Text>
+        <Text style={{ color: theme.textColor }}>
           Please confirm your country code and enter your phone number
         </Text>
         {/* phone Number */}
-        <View style={{ marginHorizontal: 16 }} className="flex">
+        <View
+          style={{
+            marginHorizontal: 16,
+          }}
+          className="flex"
+        >
           <PhoneInput
             ref={phoneInput}
             defaultValue={phoneNumber}
@@ -40,10 +79,13 @@ const Verification: React.FC = ({ navigation }: any) => {
             onChangeFormattedText={(text) => {
               setFormattedValue(text);
             }}
-            // containerStyle={styles.phoneInputContainer}
-            // textInputStyle={styles.phoneInputText}
-            withDarkTheme
-            withShadow
+            textInputProps={commonTextInputProps}
+            containerStyle={styles.container}
+            textContainerStyle={styles.phoneInputContainer}
+            textInputStyle={styles.phoneInputText}
+            codeTextStyle={styles.phoneInputText}
+            withDarkTheme={isDark ? true : false}
+            withShadow={true}
             autoFocus
           />
           <CustomButton
@@ -56,27 +98,4 @@ const Verification: React.FC = ({ navigation }: any) => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-//   title: {
-//     fontSize: 20,
-//     fontWeight: "bold",
-//     marginBottom: 20,
-//   },
-//   phoneInputContainer: {
-//     width: "80%",
-//     marginBottom: 20,
-//   },
-//   phoneInputText: {
-//     fontSize: 16,
-//   },
-//   phoneNumberText: {
-//     marginTop: 20,
-//     fontSize: 18,
-//   },
-// });
 export default Verification;

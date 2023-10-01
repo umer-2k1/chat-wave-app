@@ -4,9 +4,9 @@ import { ThemeProvider } from "./theme/themeContext";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ThemeWrapper } from "./src/components/ThemeWrapper";
-import Welcome from "./src/screens/Welcome";
-import Verification from "./src/screens/Verification";
-import Otp from "./src/screens/Otp";
+
+// import ==> screens
+import { Otp, Welcome, Verification } from "./src/screens";
 
 export default function App() {
   const Stack = createNativeStackNavigator();

@@ -13,8 +13,10 @@ const Welcome: React.FC = ({ navigation }: any) => {
     >
       <View className="flex mx-4">
         <Image source={require("../assets/Illustration.png")} />
-        <Text>Connect easily with your family and friends over countries</Text>
-        <Text>Terms & Privacy Policy</Text>
+        <Text style={{ color: theme.textColor }}>
+          Connect easily with your family and friends over countries
+        </Text>
+        <Text style={{ color: theme.textColor }}>Terms & Privacy Policy</Text>
         <CustomButton
           label={"Start Messaging"}
           onPress={() => navigation.navigate("verification")}
@@ -26,7 +28,7 @@ const Welcome: React.FC = ({ navigation }: any) => {
         onPress={() => changeTheme()}
       />
 
-      <Text>
+      <Text style={{ color: theme.textColor }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
         cumque excepturi molestias eum reiciendis omnis! Eos, exercitationem
         hic? Illo eos consequuntur facere!
