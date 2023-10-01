@@ -4,7 +4,8 @@ export const theLightTheme = {
   primary: "#002DE3",
   textColor: "#3C2A21",
   // textColor: "#0F1828",
-  bgColor: "#fff",
+  // bgColor: "#fff",
+  bgColor: "#F7F7FC",
 };
 export const theDarkTheme = {
   type: "dark",
