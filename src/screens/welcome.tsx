@@ -1,9 +1,7 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import { useTheme } from "../../theme/themeContext";
 import CustomButton from "../components/CustomButton";
-
 const Welcome: React.FC = ({ navigation }: any) => {
   const { theme, isDark, changeTheme } = useTheme();
   return (

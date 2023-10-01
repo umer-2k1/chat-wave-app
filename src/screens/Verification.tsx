@@ -11,7 +11,8 @@ import {
 import { useTheme } from "../../theme/themeContext";
 import PhoneInput from "react-native-phone-number-input";
 import CustomButton from "../components/CustomButton";
-
+// @ts-ignore
+import Ionicons from "react-native-vector-icons/Ionicons";
 const Verification: React.FC = ({ navigation }: any) => {
   const { theme, isDark } = useTheme();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -56,6 +57,13 @@ const Verification: React.FC = ({ navigation }: any) => {
       style={{ backgroundColor: theme.bgColor }}
       className="w-screen h-screen flex"
     >
+      {/* back icon */}
+      <Ionicons
+        name="chevron-back"
+        style={{ fontSize: 35, color: theme.textColor }}
+        onPress={() => navigation.goBack()}
+      />
+
       <View className="">
         <Text style={{ color: theme.textColor }}>Enter Your Phone Number</Text>
         <Text style={{ color: theme.textColor }}>

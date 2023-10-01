@@ -1,16 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Alert,
-  TextInput,
-} from "react-native";
+import { StyleSheet, Text, View, Alert, TextInput } from "react-native";
+// @ts-ignore
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { useTheme } from "../../theme/themeContext";
 import CustomButton from "../components/CustomButton";
 
-const Otp: React.FC = () => {
+const Otp: React.FC = ({ navigation }: any) => {
   const { theme } = useTheme();
   const [otp, setOtp] = useState<{ [key: number]: string }>({
     1: "",
@@ -74,6 +69,12 @@ const Otp: React.FC = () => {
       style={{ backgroundColor: theme.bgColor }}
       className="w-screen h-screen flex"
     >
+      {/* back icon */}
+      <Ionicons
+        name="chevron-back"
+        style={{ fontSize: 35, color: theme.textColor }}
+        onPress={() => navigation.goBack()}
+      />
       <View className="">
         <Text style={{ color: theme.textColor }}>Enter OTP Code here</Text>
         <Text style={{ color: theme.textColor }}>
