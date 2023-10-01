@@ -49,58 +49,69 @@ const Verification: React.FC = ({ navigation }: any) => {
     },
   });
   const commonTextInputProps: TextInputProps = {
-    placeholder: "Enter Phone Noumber",
+    placeholder: "Enter Phone Number",
     placeholderTextColor: theme.textColor,
   };
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
-      className="w-screen h-screen flex"
+      className="w-screen h-screen flex space-y-12 "
     >
       {/* back icon */}
-      <Ionicons
-        name="chevron-back"
-        style={{ fontSize: 35, color: theme.textColor }}
-        onPress={() => navigation.goBack()}
-      />
-
-      <View className="">
-        <Text style={{ color: theme.textColor }}>Enter Your Phone Number</Text>
-        <Text style={{ color: theme.textColor }}>
+      <View className="mt-8 mx-4">
+        <Ionicons
+          name="chevron-back"
+          style={{ fontSize: 35, color: theme.textColor }}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
+      <View className="flex space-y-4 space-x-2 justify-center items-center">
+        <Text className="text-2xl font-bold" style={{ color: theme.textColor }}>
+          Enter Your Phone Number
+        </Text>
+        <Text
+          className="text-base text-center"
+          style={{ color: theme.textColor }}
+        >
           Please confirm your country code and enter your phone number
         </Text>
-        {/* phone Number */}
-        <View
-          style={{
-            marginHorizontal: 16,
+      </View>
+      {/* phone Number */}
+      <View
+        style={
+          {
+            // marginHorizontal: 16,
+          }
+        }
+        className="items-center"
+      >
+        <PhoneInput
+          ref={phoneInput}
+          defaultValue={phoneNumber}
+          defaultCode="PK"
+          layout="first"
+          onChangeText={(text) => {
+            setPhoneNumber(text);
           }}
-          className="flex"
-        >
-          <PhoneInput
-            ref={phoneInput}
-            defaultValue={phoneNumber}
-            defaultCode="PK"
-            layout="first"
-            onChangeText={(text) => {
-              setPhoneNumber(text);
-            }}
-            onChangeFormattedText={(text) => {
-              setFormattedValue(text);
-            }}
-            textInputProps={commonTextInputProps}
-            containerStyle={styles.container}
-            textContainerStyle={styles.phoneInputContainer}
-            textInputStyle={styles.phoneInputText}
-            codeTextStyle={styles.phoneInputText}
-            withDarkTheme={isDark ? true : false}
-            withShadow={true}
-            autoFocus
-          />
-          <CustomButton
-            label="Continue"
-            onPress={() => navigation.navigate("otp")}
-          />
-        </View>
+          onChangeFormattedText={(text) => {
+            setFormattedValue(text);
+          }}
+          textInputProps={commonTextInputProps}
+          containerStyle={styles.container}
+          textContainerStyle={styles.phoneInputContainer}
+          textInputStyle={styles.phoneInputText}
+          codeTextStyle={styles.phoneInputText}
+          withDarkTheme={isDark ? true : false}
+          withShadow={true}
+          autoFocus
+        />
+      </View>
+      {/* <View className="w-[90%] mx-auto space-x-2"> */}
+      <View className="flex mx-4">
+        <CustomButton
+          label="Continue"
+          onPress={() => navigation.navigate("otp")}
+        />
       </View>
     </View>
   );

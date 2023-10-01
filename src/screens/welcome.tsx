@@ -36,7 +36,7 @@ const Welcome: React.FC = ({ navigation }: any) => {
         </View>
       </View>
 
-      <View className="flex-1">
+      <View className="">
         <CustomButton
           label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
           onPress={() => changeTheme()}
