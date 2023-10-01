@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+// imports
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/themeContext";
-
 import PhoneInput from "react-native-phone-number-input";
+import CustomButton from "../components/CustomButton";
+
 const Verification: React.FC = ({ navigation }: any) => {
   const { theme, isDark, changeTheme } = useTheme();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -51,14 +53,18 @@ const Verification: React.FC = ({ navigation }: any) => {
             withShadow
             autoFocus
           />
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ backgroundColor: theme.primary }}
             className={`flex justify-center items-center rounded-full p-4 `}
             // onPress={() => getPhoneNumber()}
             onPress={() => navigation.navigate("otp")}
           >
             <Text className="text-center text-white">Continue</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <CustomButton
+            label="Continue"
+            onPress={() => navigation.navigate("otp")}
+          />
         </View>
       </View>
     </View>
