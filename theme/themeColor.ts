@@ -2,7 +2,8 @@ export const theLightTheme = {
   type: "light",
   // bgColor: (opacity: number) => `rgba(112, 66, 20, ${opacity})`,
   primary: "#002DE3",
-  text: "#3C2A21",
+  textColor: "#3C2A21",
+  // textColor: "#0F1828",
   bgColor: "#fff",
 };
 export const theDarkTheme = {

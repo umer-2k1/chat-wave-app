@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ThemeWrapper } from "./src/components/ThemeWrapper";
 import Welcome from "./src/screens/Welcome";
 import Verification from "./src/screens/Verification";
+import Otp from "./src/screens/Otp";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -25,6 +26,11 @@ export default function App() {
                 options={{ headerShown: false }}
                 name="verification"
                 component={Verification}
+              />
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="otp"
+                component={Otp}
               />
             </Stack.Navigator>
           </NavigationContainer>

@@ -13,7 +13,12 @@ export const ThemeWrapper = ({ children }: any) => {
   const { theme, isDark, changeTheme } = useTheme();
   return (
     <View
-      style={{ backgroundColor: theme.bgColor }}
+      style={{
+        backgroundColor: theme.bgColor,
+        // flex: 1,s
+        // width: 100,
+        // height: 100,
+      }}
       className="w-screen h-screen flex"
     >
       {children}
