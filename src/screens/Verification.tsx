@@ -55,7 +55,7 @@ const Verification: React.FC = ({ navigation }: any) => {
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
-      className="w-screen h-screen flex space-y-12 "
+      className="w-screen h-screen flex space-y-12"
     >
       {/* back icon */}
       <View className="mt-8 mx-4">

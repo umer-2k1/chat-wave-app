@@ -42,6 +42,7 @@ const Otp: React.FC = ({ navigation }: any) => {
     if (enteredOtp.length >= 6) {
       Alert.alert("Entered OTP ", enteredOtp);
       setShowElement(true);
+      navigation.navigate("login");
     } else if (enteredOtp.length < 6) {
       setShowElement(false);
     }
@@ -67,17 +68,25 @@ const Otp: React.FC = ({ navigation }: any) => {
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
-      className="w-screen h-screen flex"
+      className="w-screen h-screen flex space-y-12 "
     >
       {/* back icon */}
-      <Ionicons
-        name="chevron-back"
-        style={{ fontSize: 35, color: theme.textColor }}
-        onPress={() => navigation.goBack()}
-      />
-      <View className="">
-        <Text style={{ color: theme.textColor }}>Enter OTP Code here</Text>
-        <Text style={{ color: theme.textColor }}>
+      <View className="mt-8 mx-4">
+        <Ionicons
+          name="chevron-back"
+          style={{ fontSize: 35, color: theme.textColor }}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
+
+      <View className="flex space-y-4 space-x-2 justify-center items-center">
+        <Text className="text-2xl font-bold" style={{ color: theme.textColor }}>
+          Enter OTP Code here
+        </Text>
+        <Text
+          className="text-base text-center"
+          style={{ color: theme.textColor }}
+        >
           We have sent you an SMS with the code to +62 1309 - 1710 - 1920
         </Text>
       </View>
@@ -181,26 +190,30 @@ const Otp: React.FC = ({ navigation }: any) => {
       </View>
       <View>
         {timer > 0 && (
-          <Text style={{ color: theme.textColor }}>
+          <Text
+            className="text-base text-center"
+            style={{ color: theme.textColor }}
+          >
             If you don't get OTP, you can try in{" "}
             <Text style={{ color: theme.textColor }} className="font-bold ">
               {timer} seconds
             </Text>
           </Text>
         )}
-      </View>
-      {showElement && <CustomButton label={"Verify"} onPress={showDigits} />}
 
-      {/* show reset button */}
-      {showResetBtn && (
-        <View>
-          <CustomButton
-            label={"Resend OTP"}
-            onPress={resetHandler}
-            textStyle="font-bold"
-          />
-        </View>
-      )}
+        {/* show reset button */}
+        {showResetBtn && (
+          <View className="flex mx-4">
+            <CustomButton
+              label={"Resend OTP"}
+              onPress={resetHandler}
+              textStyle="font-bold"
+            />
+          </View>
+        )}
+      </View>
+
+      {showElement && <CustomButton label={"Verify"} onPress={showDigits} />}
     </View>
   );
 };
@@ -214,7 +227,7 @@ const styles = StyleSheet.create({
     // color: "rgb(107 114 128)",
     // backgroundColor: theme.secondary,
     borderColor: "#EDEDED",
-    marginLeft: 10,
+    marginLeft: 12,
     textAlign: "center",
     fontSize: 20,
     fontWeight: "800",

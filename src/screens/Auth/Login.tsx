@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { useTheme } from "../../theme/themeContext";
-import CustomButton from "../components/CustomButton";
+import { useTheme } from "../../../theme/themeContext";
+import CustomButton from "../../components/CustomButton";
 
 const Login: React.FC = ({ navigation }: any) => {
   const { theme, changeTheme } = useTheme();
