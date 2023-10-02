@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
+// @ts-ignore
+import AntDesign from "react-native-vector-icons/AntDesign";
+// @ts-ignore
+import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "../../../theme/themeContext";
 import CustomButton from "../../components/CustomButton";
 
 const Login: React.FC = ({ navigation }: any) => {
   const { theme, changeTheme } = useTheme();
+  const [isPasswordShown, setPasswordShown] = useState(false);
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -24,10 +29,20 @@ const Login: React.FC = ({ navigation }: any) => {
 
       {/* inputs */}
       <View className="items-center mx-4">
+        <AntDesign
+          name="user"
+          style={{ fontSize: 35, color: theme.textColor }}
+          onPress={() => navigation.goBack()}
+        />
         <TextInput
           style={{ backgroundColor: theme.secondary }}
           className="mt-1 p-3 w-full border rounded-md bg-gray-200 focus:outline-none focus:border-gray-400"
           placeholder="Your name"
+        />
+        <Feather
+          name="lock"
+          style={{ fontSize: 35, color: theme.textColor }}
+          onPress={() => navigation.goBack()}
         />
         <TextInput
           style={{ backgroundColor: theme.secondary }}
