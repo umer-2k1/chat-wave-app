@@ -29,16 +29,26 @@ const Login: React.FC = ({ navigation }: any) => {
 
       {/* inputs */}
       <View className="items-center mx-4">
-        <AntDesign
-          name="user"
-          style={{ fontSize: 35, color: theme.textColor }}
-          onPress={() => navigation.goBack()}
-        />
-        <TextInput
-          style={{ backgroundColor: theme.secondary }}
-          className="mt-1 p-3 w-full border rounded-md bg-gray-200 focus:outline-none focus:border-gray-400"
-          placeholder="Your name"
-        />
+        <View
+          style={{ paddingHorizontal: 25, backgroundColor: theme.secondary }}
+          className="items-center flex-row justify-center focus:border-gray-400 h-[65px] rounded-lg"
+        >
+          <AntDesign
+            name="user"
+            style={{ fontSize: 35, color: theme.textColor }}
+            onPress={() => navigation.goBack()}
+          />
+          <TextInput
+            style={{
+              backgroundColor: theme.secondary,
+              marginVertical: 10,
+              color: theme.textColor,
+            }}
+            className="flex-1 h-full px-4 focus:outline-none bg-gray-200"
+            placeholder="Your name"
+            placeholderTextColor={theme.textColor}
+          />
+        </View>
         <Feather
           name="lock"
           style={{ fontSize: 35, color: theme.textColor }}

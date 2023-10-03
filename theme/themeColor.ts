@@ -10,7 +10,7 @@ export const theLightTheme = {
 };
 export const theDarkTheme = {
   type: "dark",
-  bgColor: "#152033",
+  bgColor: "#0F1828",
   primary: "#375FFF",
   secondary: "#152033",
   // bgColor:"#0F1828",
