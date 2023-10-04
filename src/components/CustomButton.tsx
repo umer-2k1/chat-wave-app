@@ -1,5 +1,4 @@
-import React, { useState, useRef, ReactNode } from "react";
-import { StatusBar } from "expo-status-bar";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -25,9 +24,6 @@ const CustomButton = ({
       style={{
         backgroundColor: theme.primary,
         marginTop: 16,
-        // borderRadius: 8,
-        // padding: 16,
-        // alignItems: "center",
       }}
       className={`flex justify-center items-center rounded-full p-4 ${containerStyle}`}
       onPress={onPress}

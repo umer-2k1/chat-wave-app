@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ThemeWrapper } from "./src/components/ThemeWrapper";
 
 // import ==> screens
-import { Otp, Welcome, Verification, Login } from "./src/screens";
+import { Otp, Welcome, Verification, Login, SignUp } from "./src/screens";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -36,6 +36,11 @@ export default function App() {
                 options={{ headerShown: false }}
                 name="login"
                 component={Login}
+              />
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="signup"
+                component={SignUp}
               />
             </Stack.Navigator>
           </NavigationContainer>
