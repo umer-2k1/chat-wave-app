@@ -10,13 +10,12 @@ import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useTheme } from "../../../theme/themeContext";
 import CustomButton from "../../components/CustomButton";
-
 const SignUp = ({ navigation }: any) => {
-  const { theme, changeTheme } = useTheme();
+  const { theme, changeTheme, isDark } = useTheme();
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
-      className="w-screen h-screen flex space-y-12"
+      className="w-screen h-screen flex space-y-8"
     >
       {/* back icon */}
       <View className="flex flex-row items-center mt-8 mx-4">
@@ -39,6 +38,42 @@ const SignUp = ({ navigation }: any) => {
         >
           Sign Up to create an account
         </Text>
+      </View>
+
+      <View className="relative">
+        <View
+          style={{ backgroundColor: theme.secondary }}
+          className="  mx-auto w-32 items-center justify-center h-32 rounded-full"
+        >
+          <AntDesign
+            name="user"
+            style={{ fontSize: 65, color: theme.textColor }}
+          />
+        </View>
+        <AntDesign
+          name="pluscircle"
+          className=""
+          style={{
+            fontSize: 35,
+            color: theme.textColor,
+            position: "absolute",
+            top: "40%",
+            right: "50%",
+            transform: [{ translateX: 50 }, { translateY: 50 }],
+          }}
+        />
+        {/* <View
+          style={{
+            backgroundColor: isDark ? "white" : "black",
+            marginBottom: -52,
+          }}
+          className=" p-2 rounded-full ml-20"
+        >
+          <AntDesign
+            name="plus"
+            style={{ fontSize: 35, color: theme.textColor }}
+            />
+        </View> */}
       </View>
 
       {/* inputs */}
