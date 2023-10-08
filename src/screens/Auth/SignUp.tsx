@@ -10,8 +10,16 @@ import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useTheme } from "../../../theme/themeContext";
 import CustomButton from "../../components/CustomButton";
+// import { SignupPayload } from "../types/authTypes";
+
 const SignUp = ({ navigation }: any) => {
   const { theme, changeTheme, isDark } = useTheme();
+  // const handleSignup = () => {
+  //   const payload: SignupPayload = { name, email, password };
+  //   // Dispatch the signup action with the provided payload
+  //   dispatch(signup(payload));
+  // };
+
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
