@@ -4,7 +4,8 @@ import { ThemeProvider } from "./theme/themeContext";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ThemeWrapper } from "./src/components/ThemeWrapper";
-
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store";
 // import ==> screens
 import { Otp, Welcome, Verification, Login, SignUp } from "./src/screens";
 
@@ -13,40 +14,42 @@ export default function App() {
 
   return (
     <SafeAreaView>
-      <ThemeProvider>
-        <ThemeWrapper>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="welcome"
-                component={Welcome}
-              />
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="verification"
-                component={Verification}
-              />
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="otp"
-                component={Otp}
-              />
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="login"
-                component={Login}
-              />
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="signup"
-                component={SignUp}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </ThemeWrapper>
-        <StatusBar style="auto" />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <ThemeWrapper>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="welcome"
+                  component={Welcome}
+                />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="verification"
+                  component={Verification}
+                />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="otp"
+                  component={Otp}
+                />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="login"
+                  component={Login}
+                />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="signup"
+                  component={SignUp}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </ThemeWrapper>
+          <StatusBar style="auto" />
+        </ThemeProvider>
+      </Provider>
     </SafeAreaView>
   );
 }
