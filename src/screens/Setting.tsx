@@ -28,7 +28,38 @@ const Setting: React.FC = ({ navigation }: any) => {
         </Text>
       </View>
       {/* prfile */}
-
+      <View className="flex flex-row items-center justify-between">
+        <View className="flex-row items-center">
+          <View
+            style={{ backgroundColor: theme.secondary }}
+            className="w-16 items-center justify-center h-16 rounded-full"
+          >
+            <AntDesign
+              name="user"
+              style={{ fontSize: 30, color: theme.textColor }}
+            />
+          </View>
+          <View className="mx-4 flex items-start">
+            <Text
+              style={{ color: theme.textColor }}
+              className="text-lg ml-2 font-semibold"
+            >
+              Muhammad Umer
+            </Text>
+            <Text className="text-[#ADB5BD] text-lg ml-2 font-semibold">
+              +92xxxxxxxxxx
+            </Text>
+          </View>
+        </View>
+        <View>
+          <Ionicons
+            name="chevron-forward"
+            className="font-extrabold"
+            style={{ fontSize: 25, color: theme.textColor }}
+            // onPress={() => navigation.goBack()}
+          />
+        </View>
+      </View>
       {/* account */}
       <View className="flex flex-row items-center justify-between">
         <View className="flex-row items-center">
