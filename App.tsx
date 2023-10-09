@@ -7,7 +7,14 @@ import { ThemeWrapper } from "./src/components/ThemeWrapper";
 import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
 // import ==> screens
-import { Otp, Welcome, Verification, Login, SignUp } from "./src/screens";
+import {
+  Otp,
+  Welcome,
+  Verification,
+  Login,
+  SignUp,
+  Setting,
+} from "./src/screens";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -43,6 +50,11 @@ export default function App() {
                   options={{ headerShown: false }}
                   name="signup"
                   component={SignUp}
+                />
+                <Stack.Screen
+                  options={{ headerShown: false }}
+                  name="setting"
+                  component={Setting}
                 />
               </Stack.Navigator>
             </NavigationContainer>

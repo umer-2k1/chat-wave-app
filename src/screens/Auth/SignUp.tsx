@@ -153,7 +153,7 @@ const SignUp = ({ navigation }: any) => {
         <CustomButton
           label={"Sign Up"}
           // onPress={() => navigation.navigate("verification")}
-          onPress={() => Alert.alert("Sin up")}
+          onPress={() => navigation.navigate("setting")}
         />
       </View>
     </View>
