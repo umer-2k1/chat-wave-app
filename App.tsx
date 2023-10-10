@@ -14,7 +14,10 @@ import {
   Login,
   SignUp,
   Setting,
+  Contacts,
 } from "./src/screens";
+import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -24,40 +27,47 @@ export default function App() {
       <Provider store={store}>
         <ThemeProvider>
           <ThemeWrapper>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="welcome"
-                  component={Welcome}
-                />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="verification"
-                  component={Verification}
-                />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="otp"
-                  component={Otp}
-                />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="login"
-                  component={Login}
-                />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="signup"
-                  component={SignUp}
-                />
-                <Stack.Screen
-                  options={{ headerShown: false }}
-                  name="setting"
-                  component={Setting}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
+            <GluestackUIProvider config={config}>
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="welcome"
+                    component={Welcome}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="verification"
+                    component={Verification}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="otp"
+                    component={Otp}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="login"
+                    component={Login}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="signup"
+                    component={SignUp}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="setting"
+                    component={Setting}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="contacts"
+                    component={Contacts}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </GluestackUIProvider>
           </ThemeWrapper>
           <StatusBar style="auto" />
         </ThemeProvider>
