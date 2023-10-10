@@ -16,6 +16,7 @@ import {
   Setting,
   Contacts,
   Chats,
+  PersonalChat,
 } from "./src/screens";
 import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
@@ -70,6 +71,11 @@ export default function App() {
                     options={{ headerShown: false }}
                     name="chats"
                     component={Chats}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="personal-chat"
+                    component={PersonalChat}
                   />
                 </Stack.Navigator>
               </NavigationContainer>
