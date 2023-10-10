@@ -15,6 +15,7 @@ import {
   SignUp,
   Setting,
   Contacts,
+  Chats,
 } from "./src/screens";
 import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
@@ -64,6 +65,11 @@ export default function App() {
                     options={{ headerShown: false }}
                     name="contacts"
                     component={Contacts}
+                  />
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="chats"
+                    component={Chats}
                   />
                 </Stack.Navigator>
               </NavigationContainer>

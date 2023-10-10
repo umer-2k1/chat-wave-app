@@ -22,7 +22,7 @@ import {
   Heading,
 } from "@gluestack-ui/themed";
 
-const Contacts = ({ navigation }: any) => {
+const Chats = ({ navigation }: any) => {
   const { theme } = useTheme();
   return (
     <View
@@ -34,19 +34,26 @@ const Contacts = ({ navigation }: any) => {
           style={{ color: theme.textColor }}
           className="text-xl font-semibold "
         >
-          Contacts
+          Chats
         </Text>
-        <AntDesign
-          name="plus"
-          style={{ fontSize: 25, color: theme.textColor }}
-          onPress={() => navigation.goBack()}
-        />
+        <View className="flex flex-row space-x-6">
+          <MaterialCommunityIcons
+            name="message-plus-outline"
+            style={{ fontSize: 25, color: theme.textColor }}
+            onPress={() => navigation.goBack()}
+          />
+          <MaterialCommunityIcons
+            name="playlist-check"
+            style={{ fontSize: 25, color: theme.textColor }}
+            onPress={() => navigation.goBack()}
+          />
+        </View>
       </View>
       {/* search bar */}
       <View
         style={{ paddingHorizontal: 25, backgroundColor: theme.secondary }}
         className="items-center flex-row justify-center focus:border-gray-400
-        px-[10px] py-[2px] rounded-lg mb-6 text-gray-500 "
+            px-[10px] py-[2px] rounded-lg mb-6 text-gray-500 "
       >
         <AntDesign name="search1" style={{ fontSize: 25, color: "#ADB5BD" }} />
         <TextInput
@@ -61,7 +68,7 @@ const Contacts = ({ navigation }: any) => {
         />
       </View>
       {/*  */}
-      <View className="">
+      <View className=" flex">
         <VStack space="4xl">
           <HStack
             sx={{
@@ -84,7 +91,7 @@ const Contacts = ({ navigation }: any) => {
               <Heading size="sm" sx={{ color: theme.textColor }}>
                 Ronald Richards
               </Heading>
-              <Text className="text-[#ADB5BD]">Last seen yesterday</Text>
+              <Text className="text-[#ADB5BD]">Hello! Good morning</Text>
             </VStack>
           </HStack>
           <HStack
@@ -109,9 +116,22 @@ const Contacts = ({ navigation }: any) => {
             </Avatar>
             <VStack>
               <Heading size="sm" sx={{ color: theme.textColor }}>
-                Muhammad Umer
+                Muhammad Umer{" "}
               </Heading>
-              <Text className="text-[#ADB5BD]">Online</Text>
+              <Text className="text-[#ADB5BD]">
+                Good morning, did you sleep well?
+              </Text>
+            </VStack>
+            <VStack
+              sx={{
+                display: "flex",
+                gap: 4,
+              }}
+            >
+              <Text className="text-[#ADB5BD] text-center"> Yesterday</Text>
+              <View className=" mx-auto w-6 h-6 items-center justify-center  rounded-full bg-[#D2D5F9]">
+                <Text className="text-[#001A83] text-center">1</Text>
+              </View>
             </VStack>
           </HStack>
           <HStack
@@ -129,7 +149,7 @@ const Contacts = ({ navigation }: any) => {
               <Heading size="sm" sx={{ color: theme.textColor }}>
                 Arlene McCoy
               </Heading>
-              <Text className="text-[#ADB5BD]">Last seen yesterday</Text>
+              <Text className="text-[#ADB5BD]">Alright!</Text>
             </VStack>
           </HStack>
         </VStack>
@@ -138,4 +158,4 @@ const Contacts = ({ navigation }: any) => {
   );
 };
 
-export default Contacts;
+export default Chats;

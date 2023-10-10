@@ -5,4 +5,5 @@ import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
 import Setting from "./Setting";
 import Contacts from "./Chat/Contacts";
-export { Otp, Verification, Welcome, Login, SignUp, Setting, Contacts };
+import Chats from "./Chat/Chats";
+export { Otp, Verification, Welcome, Login, SignUp, Setting, Contacts, Chats };
