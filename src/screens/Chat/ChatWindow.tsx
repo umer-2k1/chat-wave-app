@@ -20,7 +20,12 @@ import {
   HStack,
   Heading,
 } from "@gluestack-ui/themed";
-import { Bubble, GiftedChat, Send } from "react-native-gifted-chat";
+import {
+  Bubble,
+  GiftedChat,
+  Send,
+  InputToolbar,
+} from "react-native-gifted-chat";
 interface Message {
   _id: number;
   text: string;
@@ -194,6 +199,21 @@ const ChatWindow = ({ navigation, route }: any) => {
       />
     );
   };
+
+  const renderInputToolbar = (props: any) => {
+    return (
+      <InputToolbar
+        {...props}
+        containerStyle={{
+          // Customize the container style for the input toolbar
+          backgroundColor: "red",
+          borderTopWidth: 1,
+          borderTopColor: "silver",
+          // Add any other styles you want to customize
+        }}
+      />
+    );
+  };
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -249,19 +269,23 @@ const ChatWindow = ({ navigation, route }: any) => {
           </Text>
         </View>
       </View> */}
-      <GiftedChat
-        messages={messages}
-        onSend={(messages) => onSend(messages)}
-        user={{
-          _id: 1,
-        }}
-        renderBubble={renderBubble}
-        alwaysShowSend
-        renderSend={renderSend}
-        scrollToBottom
-        scrollToBottomComponent={scrollToBottomComponent}
-        messagesContainerStyle={{ backgroundColor: "red" }}
-      />
+      <View style={styles.content}>
+        <GiftedChat
+          messages={messages}
+          onSend={(messages) => onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+          renderBubble={renderBubble}
+          alwaysShowSend
+          renderSend={renderSend}
+          scrollToBottom
+          scrollToBottomComponent={scrollToBottomComponent}
+          messagesContainerStyle={{ backgroundColor: "red" }}
+          infiniteScroll
+          renderInputToolbar={renderInputToolbar}
+        />
+      </View>
     </View>
   );
 };
