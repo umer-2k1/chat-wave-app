@@ -38,9 +38,11 @@ interface Message {
   };
 }
 const ChatWindow = ({ navigation, route }: any) => {
-  const [messages, setMessages] = useState<Message[]>([]);
   const { username } = route.params;
   const { theme, isDark } = useTheme();
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isProfilePic, setProfilePic] = useState<Boolean>(false);
+
   const styles = StyleSheet.create({
     content: { backgroundColor: theme.bgColor, flex: 1 },
     inputContainer: {
@@ -283,27 +285,24 @@ const ChatWindow = ({ navigation, route }: any) => {
           </Text> */}
           <HStack
             sx={{
-              // marginBottom: 20,
-              // paddingVertical: 4,
-              // borderBottomWidth: 0.5,
-              // borderBottomColor: "#ADB5BD",
               display: "flex",
               alignItems: "center",
-              // borderWidth: 2,
             }}
             space="lg"
             className="border-2 border-fuchsia-600"
           >
             <Avatar bgColor="$indigo600">
-              <AvatarImage
-                source={{
-                  uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-                }}
-              />
+              {isProfilePic && (
+                <AvatarImage
+                  source={{
+                    uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                  }}
+                />
+              )}
 
-              <AvatarFallbackText>
-                {"firstName"} {"lastName"}
-              </AvatarFallbackText>
+              {!isProfilePic && (
+                <AvatarFallbackText>Muhammad Umer</AvatarFallbackText>
+              )}
               <AvatarBadge
                 sx={{
                   _dark: {
@@ -316,7 +315,7 @@ const ChatWindow = ({ navigation, route }: any) => {
             </Avatar>
             <VStack>
               <Heading size="sm" sx={{ color: theme.textColor }}>
-                {"firstName"} {"lastName"}
+                {"Muhammad"} {"Umer"}
               </Heading>
               <Text className="text-[#ADB5BD]">{"Active now"}</Text>
             </VStack>
