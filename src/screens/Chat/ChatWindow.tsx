@@ -26,6 +26,7 @@ import {
   Send,
   InputToolbar,
 } from "react-native-gifted-chat";
+
 interface Message {
   _id: number;
   text: string;
@@ -39,8 +40,31 @@ interface Message {
 const ChatWindow = ({ navigation, route }: any) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const { username } = route.params;
-  const { theme } = useTheme();
-
+  const { theme, isDark } = useTheme();
+  const styles = StyleSheet.create({
+    content: { backgroundColor: theme.bgColor, flex: 1 },
+    inputContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden",
+      width: "80%",
+      borderWidth: 1,
+      borderColor: "blue",
+      marginHorizontal: 10,
+    },
+    textInput: {
+      flex: 1,
+      alignItems: "center",
+      color: theme.textColor,
+      // paddingHorizontal: 10,
+      justifyContent: "center",
+      // marginHorizontal: 10,
+      borderWidth: 1,
+      borderColor: "pink",
+      marginBottom: 6,
+    },
+  });
   useEffect(() => {
     setMessages([
       {
@@ -132,6 +156,9 @@ const ChatWindow = ({ navigation, route }: any) => {
     );
   }, []);
 
+  console.log("theme:", theme);
+  console.log("isDarkss:", isDark);
+
   const renderBubble = (props: any) => {
     return (
       <Bubble
@@ -147,7 +174,6 @@ const ChatWindow = ({ navigation, route }: any) => {
             // borderWidth: 2,
           },
           left: {
-            // backgroundColor: "fff",
             paddingVertical: 2,
             paddingHorizontal: 6,
             marginVertical: 6,
@@ -206,14 +232,36 @@ const ChatWindow = ({ navigation, route }: any) => {
         {...props}
         containerStyle={{
           // Customize the container style for the input toolbar
-          backgroundColor: "red",
-          borderTopWidth: 1,
-          borderTopColor: "silver",
-          // Add any other styles you want to customize
+          backgroundColor: theme.secondary,
+          borderTopWidth: 0,
+          borderTopColor: "none",
+          borderRadius: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          // marginTop: 4,
+          paddingHorizontal: 4,
+          // borderWidth: 4,
+          // borderColor: "red",
+          // borderStyle: "solid",
         }}
       />
     );
   };
+
+  const renderComposer = (props: any) => {
+    return (
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your Placeholder Text"
+          placeholderTextColor={theme.textColor}
+          {...props}
+        />
+      </View>
+    );
+  };
+
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -227,12 +275,52 @@ const ChatWindow = ({ navigation, route }: any) => {
             onPress={() => navigation.goBack()}
           />
 
-          <Text
+          {/* <Text
             style={{ color: theme.textColor }}
             className="text-xl font-semibold "
           >
             {username}
-          </Text>
+          </Text> */}
+          <HStack
+            sx={{
+              // marginBottom: 20,
+              // paddingVertical: 4,
+              // borderBottomWidth: 0.5,
+              // borderBottomColor: "#ADB5BD",
+              display: "flex",
+              alignItems: "center",
+              // borderWidth: 2,
+            }}
+            space="lg"
+            className="border-2 border-fuchsia-600"
+          >
+            <Avatar bgColor="$indigo600">
+              <AvatarImage
+                source={{
+                  uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                }}
+              />
+
+              <AvatarFallbackText>
+                {"firstName"} {"lastName"}
+              </AvatarFallbackText>
+              <AvatarBadge
+                sx={{
+                  _dark: {
+                    borderColor: "$black",
+                    w: "$32",
+                    h: "$32",
+                  },
+                }}
+              />
+            </Avatar>
+            <VStack>
+              <Heading size="sm" sx={{ color: theme.textColor }}>
+                {"firstName"} {"lastName"}
+              </Heading>
+              <Text className="text-[#ADB5BD]">{"Active now"}</Text>
+            </VStack>
+          </HStack>
         </View>
         <View className="flex flex-row items-center space-x-4">
           <AntDesign
@@ -247,28 +335,6 @@ const ChatWindow = ({ navigation, route }: any) => {
         </View>
       </View>
 
-      {/* Messsages */}
-      {/* <View
-        style={{ backgroundColor: theme.bgColor }}
-        className="h-[80vh] flex border-2"
-      >
-        <View className="flex p-[12px] flex-col items-start gap-[4px]">
-          <Text
-            style={{ color: "black", backgroundColor: "gray" }}
-            className=""
-          >
-            Personal Chat Bubble
-          </Text>
-        </View>
-        <View className="flex p-[12px] flex-col items-end gap-[4px]">
-          <Text
-            style={{ color: "white", backgroundColor: theme.primary }}
-            className=""
-          >
-            Personal Chat Bubble
-          </Text>
-        </View>
-      </View> */}
       <View style={styles.content}>
         <GiftedChat
           messages={messages}
@@ -281,9 +347,17 @@ const ChatWindow = ({ navigation, route }: any) => {
           renderSend={renderSend}
           scrollToBottom
           scrollToBottomComponent={scrollToBottomComponent}
-          messagesContainerStyle={{ backgroundColor: "red" }}
+          messagesContainerStyle={{
+            backgroundColor: isDark ? theme.secondary : theme.textColor,
+            // backgroundColor: "pink",
+            marginTop: -6,
+            // borderWidth: 4,
+            // borderColor: "pink",
+            // borderStyle: "solid",
+          }}
           infiniteScroll
           renderInputToolbar={renderInputToolbar}
+          // renderComposer={renderComposer}
         />
       </View>
     </View>
