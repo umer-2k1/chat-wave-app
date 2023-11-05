@@ -6,7 +6,7 @@ import SignUp from "./Auth/SignUp";
 import Setting from "./Setting";
 import Contacts from "./Chat/Contacts";
 import Chats from "./Chat/Chats";
-import PersonalChat from "./Chat/PersonalChat";
+import ChatWindow from "./Chat/ChatWindow";
 export {
   Otp,
   Verification,
@@ -16,5 +16,5 @@ export {
   Setting,
   Contacts,
   Chats,
-  PersonalChat,
+  ChatWindow,
 };

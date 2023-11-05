@@ -6,6 +6,7 @@ import {
   Alert,
   TextInput,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -29,8 +30,21 @@ import {
   HStack,
   Heading,
 } from "@gluestack-ui/themed";
-const users = [
+import uuid from "react-native-uuid";
+interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  message: string;
+  image?: string;
+  online: boolean;
+  lastMessageTimestamp: string;
+  messageCount: number;
+}
+const generateUserId = (): string | any => uuid.v4();
+const users: User[] = [
   {
+    _id: generateUserId(),
     firstName: "Ronald",
     lastName: "Richards",
     message: "hello! Good morning",
@@ -41,6 +55,7 @@ const users = [
     messageCount: 1,
   },
   {
+    _id: generateUserId(),
     firstName: "Alice",
     lastName: "Johnson",
     message: "Hi there!",
@@ -49,6 +64,7 @@ const users = [
     messageCount: 2,
   },
   {
+    _id: generateUserId(),
     firstName: "Bob",
     lastName: "Smith",
     message: "How are you doing?",
@@ -59,6 +75,7 @@ const users = [
     messageCount: 0,
   },
   {
+    _id: generateUserId(),
     firstName: "Eva",
     lastName: "Davis",
     message: "Good evening!",
@@ -67,6 +84,7 @@ const users = [
     messageCount: 6,
   },
   {
+    _id: generateUserId(),
     firstName: "Michael",
     lastName: "Brown",
     message: "Greetings!",
@@ -74,6 +92,94 @@ const users = [
       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     online: true,
     lastMessageTimestamp: "2023-10-16T05:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-16T05:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-11-16T05:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-16T05:19:20.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-16T05:19:10.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-26T06:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-12T05:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-11T05:19:50.721+00:00",
+    messageCount: 0,
+  },
+  {
+    _id: generateUserId(),
+    firstName: "Michael",
+    lastName: "Brown",
+    message: "Greetings!",
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    online: true,
+    lastMessageTimestamp: "2023-10-18T05:19:50.721+00:00",
     messageCount: 0,
   },
 ];
@@ -124,40 +230,47 @@ const Chats = ({ navigation }: any) => {
         />
       </View>
       {/*  */}
-      <View className=" flex w-full border-2">
+      <View className=" flex w-full ">
         <VStack space="4xl">
           <FlatList
             data={users}
-            keyExtractor={(item) => item.lastMessageTimestamp}
+            keyExtractor={(item) => item._id}
             renderItem={({ item }) => (
               // const { firstName, lastName, message, image, online, lastMessageTimestamp } = item;
 
-              <HStack
-                sx={{
-                  marginBottom: 20,
-                  paddingVertical: 4,
-                  // borderBottomWidth: 0.5,
-                  // borderBottomColor: "#ADB5BD",
-                  display: "flex",
-                  alignItems: "center",
-                  borderWidth: 2,
-                }}
-                space="lg"
-                // className="border-2"
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("chat-window", {
+                    username: `${item?.firstName} ${item?.lastName}`,
+                  })
+                }
               >
-                <Avatar bgColor="$indigo600">
-                  {item?.image && (
-                    <AvatarImage
-                      source={{
-                        uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-                      }}
-                    />
-                  )}
+                <HStack
+                  sx={{
+                    marginBottom: 20,
+                    paddingVertical: 4,
+                    // borderBottomWidth: 0.5,
+                    // borderBottomColor: "#ADB5BD",
+                    display: "flex",
+                    alignItems: "center",
+                    // borderWidth: 2,
+                  }}
+                  space="lg"
+                  className="border-2 border-fuchsia-600"
+                >
+                  <Avatar bgColor="$indigo600">
+                    {item?.image && (
+                      <AvatarImage
+                        source={{
+                          uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                        }}
+                      />
+                    )}
 
-                  <AvatarFallbackText>
-                    {item?.firstName} {item?.lastName}
-                  </AvatarFallbackText>
-                  {/* {item?.online && (
+                    <AvatarFallbackText>
+                      {item?.firstName} {item?.lastName}
+                    </AvatarFallbackText>
+                    {/* {item?.online && (
                     <AvatarBadge
                       sx={{
                         _dark: {
@@ -168,49 +281,47 @@ const Chats = ({ navigation }: any) => {
                       }}
                     />
                   )} */}
-                </Avatar>
-                <VStack>
-                  <Heading size="sm" sx={{ color: theme.textColor }}>
-                    {item?.firstName} {item?.lastName}
-                  </Heading>
-                  <Text className="text-[#ADB5BD]">{item?.message}</Text>
-                </VStack>
-
-                <View className=" w-1/2 flex-1">
-                  <VStack
-                    sx={{
-                      display: "flex",
-                      // justifyContent: "flex-end",
-                      gap: 4,
-                      borderWidth: 2, // Border width
-                      borderColor: "red", // Border color
-                      borderStyle: "solid",
-                    }}
-                  >
-                    <Text className="text-[#ADB5BD] text-right">
-                      {" "}
-                      {formattedTimefromNow(item?.lastMessageTimestamp)}
-                    </Text>
-                    <View
-                      className="items-end justify-end flex"
-                      style={{ flexDirection: "row" }}
-                    >
-                      {item.messageCount > 0 && (
-                        <View
-                          className="items-end justify-end flex"
-                          style={{ flexDirection: "row" }}
-                        >
-                          <View className=" mx-auto w-6 h-6 items-center justify-center  rounded-full bg-[#D2D5F9]">
-                            <Text className="text-[#001A83] text-right">
-                              {item?.messageCount}
-                            </Text>
-                          </View>
-                        </View>
-                      )}
-                    </View>
+                  </Avatar>
+                  <VStack>
+                    <Heading size="sm" sx={{ color: theme.textColor }}>
+                      {item?.firstName} {item?.lastName}
+                    </Heading>
+                    <Text className="text-[#ADB5BD]">{item?.message}</Text>
                   </VStack>
-                </View>
-              </HStack>
+
+                  <View className=" w-1/2 flex-1">
+                    <VStack
+                      sx={{
+                        display: "flex",
+                        // justifyContent: "flex-end",
+                        gap: 4,
+                      }}
+                    >
+                      <Text className="text-[#ADB5BD] text-right">
+                        {" "}
+                        {formattedTimefromNow(item?.lastMessageTimestamp)}
+                      </Text>
+                      <View
+                        className="items-end justify-end flex"
+                        style={{ flexDirection: "row" }}
+                      >
+                        {item.messageCount > 0 && (
+                          <View
+                            className="items-end justify-end flex"
+                            style={{ flexDirection: "row" }}
+                          >
+                            <View className=" mx-auto w-6 h-6 items-center justify-center  rounded-full bg-[#D2D5F9]">
+                              <Text className="text-[#001A83] text-right">
+                                {item?.messageCount}
+                              </Text>
+                            </View>
+                          </View>
+                        )}
+                      </View>
+                    </VStack>
+                  </View>
+                </HStack>
+              </TouchableOpacity>
             )}
           />
 

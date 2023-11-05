@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { StyleSheet, Text, View, Alert, TextInput } from "react-native";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -20,9 +20,43 @@ import {
   HStack,
   Heading,
 } from "@gluestack-ui/themed";
-
-const PersonalChat = ({ navigation }: any) => {
+import { GiftedChat } from "react-native-gifted-chat";
+interface Message {
+  _id: number;
+  text: string;
+  createdAt: Date;
+  user: {
+    _id: number;
+    name: string;
+    avatar: string;
+  };
+}
+const ChatWindow = ({ navigation, route }: any) => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const { username } = route.params;
   const { theme } = useTheme();
+
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+    ]);
+  }, []);
+
+  const onSend = useCallback((messages: any = []) => {
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, messages)
+    );
+  }, []);
+
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -40,7 +74,7 @@ const PersonalChat = ({ navigation }: any) => {
             style={{ color: theme.textColor }}
             className="text-xl font-semibold "
           >
-            Alex Carey
+            {username}
           </Text>
         </View>
         <View className="flex flex-row items-center space-x-4">
@@ -57,7 +91,7 @@ const PersonalChat = ({ navigation }: any) => {
       </View>
 
       {/* Messsages */}
-      <View
+      {/* <View
         style={{ backgroundColor: theme.bgColor }}
         className="h-[80vh] flex border-2"
       >
@@ -77,9 +111,16 @@ const PersonalChat = ({ navigation }: any) => {
             Personal Chat Bubble
           </Text>
         </View>
-      </View>
+      </View> */}
+      <GiftedChat
+        messages={messages}
+        onSend={(messages) => onSend(messages)}
+        user={{
+          _id: 1,
+        }}
+      />
     </View>
   );
 };
 
-export default PersonalChat;
+export default ChatWindow;
