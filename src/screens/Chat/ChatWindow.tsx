@@ -20,7 +20,7 @@ import {
   HStack,
   Heading,
 } from "@gluestack-ui/themed";
-import { GiftedChat } from "react-native-gifted-chat";
+import { Bubble, GiftedChat, Send } from "react-native-gifted-chat";
 interface Message {
   _id: number;
   text: string;
@@ -58,6 +58,66 @@ const ChatWindow = ({ navigation, route }: any) => {
           avatar: "https://placeimg.com/140/140/any",
         },
       },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
+      {
+        _id: 2,
+        text: "Hello developer",
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
+        },
+      },
     ]);
   }, []);
 
@@ -67,6 +127,73 @@ const ChatWindow = ({ navigation, route }: any) => {
     );
   }, []);
 
+  const renderBubble = (props: any) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: theme.primary,
+            paddingVertical: 2,
+            paddingHorizontal: 6,
+            borderRadius: 15,
+            marginVertical: 6,
+            // borderColor: theme.primary,
+            // borderWidth: 2,
+          },
+          left: {
+            // backgroundColor: "fff",
+            paddingVertical: 2,
+            paddingHorizontal: 6,
+            marginVertical: 6,
+            backgroundColor: theme.bgColor,
+            borderColor: "silver",
+            borderWidth: 2,
+            borderRadius: 15,
+          },
+        }}
+        textStyle={{
+          left: {
+            color: theme.textColor,
+          },
+        }}
+      />
+    );
+  };
+
+  const renderSend = (props: any) => {
+    return (
+      <Send {...props}>
+        <View>
+          <Ionicons
+            name="send"
+            style={{
+              fontSize: 25,
+              color: theme.primary,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          />
+        </View>
+      </Send>
+    );
+  };
+
+  const scrollToBottomComponent = () => {
+    return (
+      <FontAwesome
+        name="angle-double-down"
+        style={{
+          fontSize: 25,
+          // color: theme.primary,
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "center",
+        }}
+      />
+    );
+  };
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -128,6 +255,12 @@ const ChatWindow = ({ navigation, route }: any) => {
         user={{
           _id: 1,
         }}
+        renderBubble={renderBubble}
+        alwaysShowSend
+        renderSend={renderSend}
+        scrollToBottom
+        scrollToBottomComponent={scrollToBottomComponent}
+        messagesContainerStyle={{ backgroundColor: "red" }}
       />
     </View>
   );
