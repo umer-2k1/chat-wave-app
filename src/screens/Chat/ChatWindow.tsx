@@ -347,7 +347,8 @@ const ChatWindow = ({ navigation, route }: any) => {
           scrollToBottom
           scrollToBottomComponent={scrollToBottomComponent}
           messagesContainerStyle={{
-            backgroundColor: isDark ? theme.secondary : theme.textColor,
+            backgroundColor: isDark ? "#152033" : "#F7F7FC",
+            // backgroundColor: isDark ? "#152033" : "red",
             // backgroundColor: "pink",
             marginTop: -6,
             // borderWidth: 4,

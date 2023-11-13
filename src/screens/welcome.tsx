@@ -31,7 +31,9 @@ const Welcome: React.FC = ({ navigation }: any) => {
         <View className="justify-end mt-2 ">
           <CustomButton
             label={"Start Messaging"}
-            onPress={() => navigation.navigate("chats")}
+            onPress={() => navigation.navigate("login")}
+            // onPress={() => navigation.navigate("chats")}
+            // onPress={() => navigation.navigate("otp")}
             // onPress={() => navigation.navigate("verification")}
           />
         </View>

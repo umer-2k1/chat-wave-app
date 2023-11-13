@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TextInput } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, Alert } from "react-native";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
 // @ts-ignore
@@ -10,6 +10,33 @@ import { useTheme } from "../../../theme/themeContext";
 import CustomButton from "../../components/CustomButton";
 
 const Login: React.FC = ({ navigation }: any) => {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const handlerInputChange = (name: string, value: string) => {
+    setLogin({ ...login, [name]: value });
+  };
+  const loginHandler = () => {
+    console.log("Login button clicked");
+    // const { email, password } = login;
+    // if (!(password && email)) {
+    //   return Alert.alert("Incomplete password or email");
+    // } else {
+    //   console.log("Email: ", email);
+    //   console.log("Password: ", password);
+    // }
+  };
+
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //     dispatch(clearErrors());
+  //   } else if (isAuthenticate) {
+  //     navigate(`/`);
+  //   }
+  // }, [dispatch, error, toast, isAuthenticate]);
+
   const { theme, changeTheme } = useTheme();
   const [isPasswordShown, setPasswordShown] = useState(false);
   return (
@@ -60,6 +87,8 @@ const Login: React.FC = ({ navigation }: any) => {
             className="flex-1 h-full px-4 focus:outline-none bg-gray-200"
             placeholder="Your name"
             placeholderTextColor={theme.textColor}
+            value={login.email}
+            onChangeText={(text) => handlerInputChange("email", text)}
           />
         </View>
         <View
@@ -81,6 +110,8 @@ const Login: React.FC = ({ navigation }: any) => {
             placeholderTextColor={theme.textColor}
             placeholder="Password"
             secureTextEntry={true}
+            value={login.password}
+            onChangeText={(text) => handlerInputChange("password", text)}
           />
         </View>
       </View>
@@ -88,7 +119,8 @@ const Login: React.FC = ({ navigation }: any) => {
       <View className="flex mx-4">
         <CustomButton
           label={"Login"}
-          onPress={() => navigation.navigate("signup")}
+          onPress={loginHandler}
+          // onPress={() => navigation.navigate("signup")}
         />
       </View>
     </View>
