@@ -8,35 +8,47 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "../../../theme/themeContext";
 import CustomButton from "../../components/CustomButton";
-
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { login } from "../../redux/actions/authActions";
 const Login: React.FC = ({ navigation }: any) => {
-  const [login, setLogin] = useState({
+  const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.auth);
+  const [loginState, setLoginState] = useState({
     email: "",
     password: "",
   });
   const handlerInputChange = (name: string, value: string) => {
-    setLogin({ ...login, [name]: value });
+    setLoginState({ ...loginState, [name]: value });
   };
-  const loginHandler = () => {
-    console.log("Login button clicked");
-    // const { email, password } = login;
-    // if (!(password && email)) {
-    //   return Alert.alert("Incomplete password or email");
-    // } else {
-    //   console.log("Email: ", email);
-    //   console.log("Password: ", password);
-    // }
+  const loginHandler = async () => {
+    try {
+      console.log("Login button clicked");
+      const { email, password } = loginState;
+      if (!(password && email)) {
+        return Alert.alert("Incomplete password or email");
+      } else {
+        console.log("Email: ", email);
+        console.log("Password: ", password);
+        const res = await dispatch(login(loginState));
+        if (res) {
+          console.log("API Success =====>");
+          console.log(res);
+          navigation.navigate("chats");
+        }
+      }
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error);
-  //     dispatch(clearErrors());
-  //   } else if (isAuthenticate) {
-  //     navigate(`/`);
-  //   }
-  // }, [dispatch, error, toast, isAuthenticate]);
+  useEffect(() => {
+    if (error) {
+      console.log(error);
 
+      // dispatch(clearErrors());
+      // setLoading(false);
+    }
+  }, [error, dispatch]);
   const { theme, changeTheme } = useTheme();
   const [isPasswordShown, setPasswordShown] = useState(false);
   return (
@@ -85,9 +97,9 @@ const Login: React.FC = ({ navigation }: any) => {
               color: theme.textColor,
             }}
             className="flex-1 h-full px-4 focus:outline-none bg-gray-200"
-            placeholder="Your name"
+            placeholder="Email"
             placeholderTextColor={theme.textColor}
-            value={login.email}
+            value={loginState.email}
             onChangeText={(text) => handlerInputChange("email", text)}
           />
         </View>
@@ -110,7 +122,7 @@ const Login: React.FC = ({ navigation }: any) => {
             placeholderTextColor={theme.textColor}
             placeholder="Password"
             secureTextEntry={true}
-            value={login.password}
+            value={loginState.password}
             onChangeText={(text) => handlerInputChange("password", text)}
           />
         </View>
