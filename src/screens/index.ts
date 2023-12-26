@@ -7,6 +7,7 @@ import Setting from "./Setting";
 import Contacts from "./Chat/Contacts";
 import Chats from "./Chat/Chats";
 import ChatWindow from "./Chat/ChatWindow";
+import Home from "./Home";
 export {
   Otp,
   Verification,
@@ -17,4 +18,5 @@ export {
   Contacts,
   Chats,
   ChatWindow,
+  Home,
 };

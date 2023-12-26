@@ -21,24 +21,25 @@ const Login: React.FC = ({ navigation }: any) => {
     setLoginState({ ...loginState, [name]: value });
   };
   const loginHandler = async () => {
-    try {
-      console.log("Login button clicked");
-      const { email, password } = loginState;
-      if (!(password && email)) {
-        return Alert.alert("Incomplete password or email");
-      } else {
-        console.log("Email: ", email);
-        console.log("Password: ", password);
-        const res = await dispatch(login(loginState));
-        if (res) {
-          console.log("API Success =====>");
-          console.log(res);
-          navigation.navigate("chats");
-        }
-      }
-    } catch (error: any) {
-      console.error(error.message);
-    }
+    // try {
+    //   console.log("Login button clicked");
+    //   const { email, password } = loginState;
+    //   if (!(password && email)) {
+    //     return Alert.alert("Incomplete password or email");
+    //   } else {
+    //     console.log("Email: ", email);
+    //     console.log("Password: ", password);
+    //     const res = await dispatch(login(loginState));
+    //     if (res) {
+    //       console.log("API Success =====>");
+    //       console.log(res);
+    //       navigation.navigate("chats");
+    //     }
+    //   }
+    // } catch (error: any) {
+    //   console.error(error.message);
+    // }
+    navigation.navigate("setting");
   };
 
   useEffect(() => {

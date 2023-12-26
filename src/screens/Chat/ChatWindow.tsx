@@ -74,13 +74,13 @@ const ChatWindow = ({ navigation, route }: any) => {
         text: "Hello developer",
         createdAt: new Date(),
         user: {
-          _id: 2,
+          _id: 25,
           name: "React Native",
           avatar: "https://placeimg.com/140/140/any",
         },
       },
       {
-        _id: 2,
+        _id: 24,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -90,7 +90,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 20,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -100,7 +100,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 29,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -110,7 +110,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 27,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -120,7 +120,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 42,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -130,7 +130,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 22,
         text: "Hello developer",
         createdAt: new Date(),
         user: {
@@ -140,7 +140,7 @@ const ChatWindow = ({ navigation, route }: any) => {
         },
       },
       {
-        _id: 2,
+        _id: 12,
         text: "Hello developer",
         createdAt: new Date(),
         user: {

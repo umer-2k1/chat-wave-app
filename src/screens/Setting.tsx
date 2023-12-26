@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, Text, View, Alert, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { Switch } from "@rneui/themed";
 // @ts-ignore
 import Ionicons from "react-native-vector-icons/Ionicons";
 // @ts-ignore
@@ -12,7 +20,13 @@ import { useTheme } from "../../theme/themeContext";
 import CustomButton from "../components/CustomButton";
 
 const Setting: React.FC = ({ navigation }: any) => {
-  const { theme } = useTheme();
+  const { theme, isDark, changeTheme } = useTheme();
+  const [checked, setChecked] = useState<boolean>(false);
+
+  const toggleTheme = () => {
+    changeTheme();
+    setChecked(!checked);
+  };
   return (
     <View
       style={{ backgroundColor: theme.bgColor }}
@@ -60,66 +74,20 @@ const Setting: React.FC = ({ navigation }: any) => {
           />
         </View>
       </View>
-      {/* account */}
-      <View className="flex flex-row items-center justify-between">
-        <View className="flex-row items-center">
-          <AntDesign
-            name="user"
-            style={{ fontSize: 30, color: theme.textColor }}
-          />
-          <Text
-            style={{ color: theme.textColor }}
-            className="text-lg ml-2 font-semibold"
-          >
-            Account
-          </Text>
-        </View>
-        <View>
-          <Ionicons
-            name="chevron-forward"
-            className="font-extrabold"
-            style={{ fontSize: 25, color: theme.textColor }}
-            // onPress={() => navigation.goBack()}
-          />
-        </View>
-      </View>
-      {/* Chats */}
-      <View className="flex flex-row items-center justify-between">
-        <View className="flex-row items-center">
-          <Ionicons
-            name="chatbubble-outline"
-            style={{ fontSize: 25, color: theme.textColor }}
-          />
-          <Text
-            style={{ color: theme.textColor }}
-            className="text-lg ml-2 font-semibold"
-          >
-            Chats
-          </Text>
-        </View>
-        <View>
-          <Ionicons
-            name="chevron-forward"
-            className="font-extrabold"
-            style={{ fontSize: 25, color: theme.textColor }}
-            // onPress={() => navigation.goBack()}
-          />
-        </View>
-      </View>
-      {/* 2nd section */}
+
       <View className="flex space-y-8 py-4  border-b-2 border-[#EDEDED]">
-        {/* Chats */}
+        {/* account */}
         <View className="flex flex-row items-center justify-between">
           <View className="flex-row items-center">
-            <Feather
-              name="sun"
-              style={{ fontSize: 25, color: theme.textColor }}
+            <AntDesign
+              name="user"
+              style={{ fontSize: 30, color: theme.textColor }}
             />
             <Text
               style={{ color: theme.textColor }}
               className="text-lg ml-2 font-semibold"
             >
-              Appearance
+              Account
             </Text>
           </View>
           <View>
@@ -131,7 +99,60 @@ const Setting: React.FC = ({ navigation }: any) => {
             />
           </View>
         </View>
-        {/* notifications */}
+        {/* Chats */}
+        <View className="flex flex-row items-center justify-between">
+          <View className="flex-row items-center">
+            <Ionicons
+              name="chatbubble-outline"
+              style={{ fontSize: 25, color: theme.textColor }}
+            />
+            <Text
+              style={{ color: theme.textColor }}
+              className="text-lg ml-2 font-semibold"
+            >
+              Chats
+            </Text>
+          </View>
+          <View>
+            <Ionicons
+              name="chevron-forward"
+              className="font-extrabold"
+              style={{ fontSize: 25, color: theme.textColor }}
+              // onPress={() => navigation.goBack()}
+            />
+          </View>
+        </View>
+        <TouchableOpacity onPress={toggleTheme}>
+          <View className="flex flex-row items-center justify-between ">
+            <View className="flex-row items-center">
+              <Feather
+                name={isDark ? "moon" : "sun"}
+                style={{ fontSize: 25, color: theme.textColor }}
+              />
+              <Text
+                style={{ color: theme.textColor }}
+                className="text-lg ml-2 font-semibold"
+              >
+                {isDark ? "Dark" : "Light"}
+              </Text>
+            </View>
+            <View>
+              {/* <Ionicons
+                name="chevron-forward"
+                className="font-extrabold"
+                style={{ fontSize: 25, color: theme.textColor }}
+                /> */}
+              <Switch
+                color={isDark ? theme.primary : theme.secondary}
+                value={checked}
+                onValueChange={(value) => {
+                  changeTheme();
+                  setChecked(value);
+                }}
+              />
+            </View>
+          </View>
+        </TouchableOpacity>
         <View className="flex flex-row items-center justify-between">
           <View className="flex-row items-center">
             <Ionicons
@@ -154,30 +175,6 @@ const Setting: React.FC = ({ navigation }: any) => {
             />
           </View>
         </View>
-        {/* privacy */}
-        <View className="flex flex-row items-center justify-between">
-          <View className="flex-row items-center">
-            <MaterialCommunityIcons
-              name="shield-alert-outline"
-              style={{ fontSize: 25, color: theme.textColor }}
-            />
-            <Text
-              style={{ color: theme.textColor }}
-              className="text-lg ml-2 font-semibold"
-            >
-              Privacy
-            </Text>
-          </View>
-          <View>
-            <Ionicons
-              name="chevron-forward"
-              className="font-extrabold"
-              style={{ fontSize: 25, color: theme.textColor }}
-              // onPress={() => navigation.goBack()}
-            />
-          </View>
-        </View>
-        {/* Chats */}
         <View className="flex flex-row items-center justify-between">
           <View className="flex-row items-center">
             <MaterialCommunityIcons
@@ -201,7 +198,8 @@ const Setting: React.FC = ({ navigation }: any) => {
           </View>
         </View>
       </View>
-      {/* Chats */}
+
+      {/* 2nd section */}
       <View className="flex flex-row items-center justify-between">
         <View className="flex-row items-center">
           <Ionicons
@@ -224,7 +222,7 @@ const Setting: React.FC = ({ navigation }: any) => {
           />
         </View>
       </View>
-      {/* Chats */}
+      {/* Invite friends */}
       <View className="flex flex-row items-center justify-between">
         <View className="flex-row items-center">
           <Ionicons

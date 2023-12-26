@@ -20,6 +20,7 @@ import {
 } from "./src/screens";
 import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
+import BottomTabs from "./src/navigation/BottomTabs";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -32,6 +33,16 @@ export default function App() {
             <GluestackUIProvider config={config}>
               <NavigationContainer>
                 <Stack.Navigator>
+                  {/* <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="Home"
+                    component={BottomTabs}
+                  /> */}
+                  <Stack.Screen
+                    options={{ headerShown: false }}
+                    name="signup"
+                    component={SignUp}
+                  />
                   <Stack.Screen
                     options={{ headerShown: false }}
                     name="welcome"
@@ -51,11 +62,6 @@ export default function App() {
                     options={{ headerShown: false }}
                     name="login"
                     component={Login}
-                  />
-                  <Stack.Screen
-                    options={{ headerShown: false }}
-                    name="signup"
-                    component={SignUp}
                   />
                   <Stack.Screen
                     options={{ headerShown: false }}
